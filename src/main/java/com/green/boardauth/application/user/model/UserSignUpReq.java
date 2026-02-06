@@ -1,14 +1,14 @@
+
 package com.green.boardauth.application.user.model;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-//회원가입 때 FE로 넘어오는 데이터를 담기 위한 클래스
+//회원가입 때 FE로 넘어오는 데이터를 담기위한 클래스
 @Getter
 @Setter
 @ToString
-
 public class UserSignUpReq {
     private String uid;
     private String upw;

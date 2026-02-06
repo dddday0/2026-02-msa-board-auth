@@ -1,3 +1,4 @@
+
 package com.green.boardauth.application.user.model;
 
 import lombok.Getter;
