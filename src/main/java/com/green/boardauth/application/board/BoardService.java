@@ -1,7 +1,6 @@
-package com.green.boardauth.application.user.board;
+package com.green.boardauth.application.board;
 
-import com.green.boardauth.application.user.board.model.BoardPostReq;
-import com.green.boardauth.configuration.model.ResultResponse;
+import com.green.boardauth.application.board.model.BoardPostReq;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -12,8 +11,7 @@ import org.springframework.stereotype.Service;
 public class BoardService {
     private final BoardMapper boardMapper;
 
-    public int postBoard (BoardPostReq req) {
+    public int postBoard(BoardPostReq req) {
         return boardMapper.save(req);
     }
-
 }

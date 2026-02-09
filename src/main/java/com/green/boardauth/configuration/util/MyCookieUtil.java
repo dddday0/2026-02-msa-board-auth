@@ -40,4 +40,8 @@ public class MyCookieUtil {
         }
         return null;
     }
+
+    public void deleteCookie(HttpServletResponse res, String key, String path) {
+        setCookie(res, key, null, 0, path); // set은 add 개념이 아니라 교체
+    }
 }

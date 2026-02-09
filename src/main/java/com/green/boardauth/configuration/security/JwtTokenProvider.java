@@ -59,7 +59,7 @@ public class JwtTokenProvider {
     public JwtUser getJwtUserFromToken(String token){
         Claims claims = getClaims(token);
 
-        // signedUser 키 값으로 담겨져 잇는 value를 String 타입으로 리턴
+        // signedUser 키 값으로 담겨져 있는 value를 String 타입으로 리턴
         String json = claims.get(constJwt.getClaimKey(), String.class);
 
         //JSON > Object, json 문자열을 JwtUSer객체로 변환

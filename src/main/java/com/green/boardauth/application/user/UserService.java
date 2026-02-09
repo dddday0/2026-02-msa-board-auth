@@ -1,4 +1,3 @@
-
 package com.green.boardauth.application.user;
 
 import com.green.boardauth.application.user.model.UserGetOneRes;
@@ -42,4 +41,6 @@ public class UserService {
                 .nm( res.getNm() )
                 .build();
     }
+
+
 }

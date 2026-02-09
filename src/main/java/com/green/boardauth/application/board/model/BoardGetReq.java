@@ -1,0 +1,19 @@
+package com.green.boardauth.application.board.model;
+
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.web.bind.annotation.BindParam;
+
+@Getter
+@Setter
+public class BoardGetReq {
+    private int page;
+    private int size;
+    private String searchText;
+
+    public BoardGetReq(int page, int size, @BindParam("search_text") String searchText) {
+        this.page = page;
+        this.size = size;
+        this.searchText = searchText;
+    }
+}

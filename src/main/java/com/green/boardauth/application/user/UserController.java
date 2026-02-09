@@ -1,3 +1,4 @@
+
 package com.green.boardauth.application.user;
 
 import com.green.boardauth.application.user.model.UserSignInReq;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import javax.xml.transform.Result;
 
 @Slf4j
 @RestController
@@ -40,4 +43,13 @@ public class UserController {
         }
         return new ResultResponse<>(userSignInRes == null ? "로그인 실패" : "로그인 성공", userSignInRes);
     }
+
+    @PostMapping("/signout")
+    public ResultResponse<?> signOut(HttpServletResponse res){
+        jwtTokenManager.signOut(res);
+        return new ResultResponse<>("로그아웃 성공", 1);
+    }
+
+
+
 }

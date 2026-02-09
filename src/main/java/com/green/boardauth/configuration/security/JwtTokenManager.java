@@ -2,6 +2,7 @@ package com.green.boardauth.configuration.security;
 
 import com.green.boardauth.configuration.constants.ConstJwt;
 import com.green.boardauth.configuration.model.JwtUser;
+import com.green.boardauth.configuration.model.ResultResponse;
 import com.green.boardauth.configuration.model.UserPrincipal;
 import com.green.boardauth.configuration.util.MyCookieUtil;
 import jakarta.servlet.http.HttpServletRequest;
@@ -23,6 +24,18 @@ public class JwtTokenManager { //인증 처리 총괄
     public void issue(HttpServletResponse res, JwtUser jwtUser){
         setAccessTokenInCookie(res, jwtUser);
         setRefreshTokenInCookie(res, jwtUser);
+    }
+    public void deleteAccessTokenInCookie(HttpServletResponse res){
+        myCookieUtil.deleteCookie(res, constJwt.getAccessTokenCookieName(), constJwt.getAccessTokenCookiePath());
+    }
+
+    public void deleteRefreshTokenInCookie(HttpServletResponse res){
+        myCookieUtil.deleteCookie(res, constJwt.getRefreshTokenCookieName(), constJwt.getRefreshTokenCookiePath());
+    }
+
+    public void signOut(HttpServletResponse res){
+        deleteAccessTokenInCookie(res);
+        deleteRefreshTokenInCookie(res);
     }
 
     public void setAccessTokenInCookie(HttpServletResponse res, JwtUser jwtUser){
