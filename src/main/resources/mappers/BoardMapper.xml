@@ -8,4 +8,26 @@
         , user_id = #{userId}
     </insert>
 
+    <select id="findAll">
+        SELECT b.id, b.title,b.created_at,u.nm
+        FROM board AS b
+        INNER JOIN  user As u
+        ON b.user_id = u.id
+        <if test="searchText != null and searchText != ''">
+            WHERE b.title LIKE '%${searchText}%'
+                OR b.contents LIKE '%${searchText}%'
+        </if>
+        ORDER BY b.id DESC
+        LIMIT #{startIdx}, #{size}
+    </select>
+
+    <select id="findMaxPage">
+        SELECT ceil(COUNT(1)/ #{size})
+        FROM board
+        <if test="searchText != null and searchText != ''">
+        WHERE title LIKE '%${searchText}%'
+        OR contents LIKE ''%${searchText}%'
+        </if>
+    </select>
+
 </mapper>
