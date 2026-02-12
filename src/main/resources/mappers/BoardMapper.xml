@@ -24,12 +24,19 @@
         LIMIT #{startIdx}, #{size}
     </select>
 
+    <select id="searchT">
+        SELECT DISTINCT title
+        FROM board
+            WHERE title LIKE concat(#{searchText},'%')
+        LIMIT 10
+    </select>
+
     <select id="findMaxPage">
         SELECT ceil(COUNT(1)/ #{size})
         FROM board
         <if test="searchText != null and searchText != ''">
         WHERE title LIKE '%${searchText}%'
-        OR contents LIKE ''%${searchText}%'
+        OR contents LIKE '%${searchText}%'
         </if>
     </select>
 
@@ -52,8 +59,7 @@
         SET title = #{title}
         , contents = #{contents}
         WHERE id = #{id}
-        AND user_id = #{signedUserId}
-
+        AND user_id = #{userId}
     </update>
 
 </mapper>

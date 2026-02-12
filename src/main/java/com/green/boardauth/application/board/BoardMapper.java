@@ -10,6 +10,7 @@ import java.util.List;
 public interface BoardMapper {
     int save(BoardPostPutReq req);
     List<BoardGetRes> findAll(BoardGetReq req);
+    List<String> searchT(String searchText);
     int findMaxPage(BoardGetMaxPageReq req);
     BoardGetOneRes findById(long id);
     int del(BoardDelReq req);

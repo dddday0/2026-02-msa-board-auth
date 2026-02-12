@@ -38,6 +38,13 @@ public class BoardController {
         return new ResultResponse<>(String.format("%d rows", list.size()), list );
     }
 
+    @GetMapping("related_search")
+    public ResultResponse<?> getRelatedTitles(@RequestParam("search_text") String searchText){
+        List<String> list = boardService.getRelatedTitles(searchText);
+        return new ResultResponse<>(String.format("%d rows", list.size()), list );
+    }
+
+
     @GetMapping("max_page")
     public ResultResponse<?> getBoardMaxPage(@ModelAttribute BoardGetMaxPageReq req){
         log.info("req: {}", req);
@@ -51,6 +58,8 @@ public class BoardController {
 
         return new ResultResponse<>(String.format("id: %d", id), res);
     }
+
+
 
     @DeleteMapping("{id}")
     public ResultResponse<?> delBoard(@AuthenticationPrincipal UserPrincipal userPrincipal

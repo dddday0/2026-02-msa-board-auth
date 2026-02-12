@@ -28,6 +28,8 @@ public class BoardService {
 
     public BoardGetOneRes getBoard(long id){return boardMapper.findById(id);}
 
+    public List<String> getRelatedTitles(String searchText) {return boardMapper.searchT(searchText);}
+
     public int delBoard(BoardDelReq req){
         return boardMapper.del(req);}
 
